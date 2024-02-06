@@ -1,16 +1,13 @@
 const express = require("express")
-const app = express()
+const router = express.Router()
 const db = require("./db")
 const { isValidPost } = require("../helpers")
 
-app.set("view engine", "ejs")
-app.set("views", __dirname + "/views")
-
-app.get("/", () => {
+router.get("/", () => {
   res.send(db)
 })
 
-app.get("/:id", (req, res) => {
+router.get("/:id", (req, res) => {
   try {
     const id = Number(req.params.id)
     const post = db.posts.find(it => it.id === id)
@@ -20,7 +17,4 @@ app.get("/:id", (req, res) => {
     res.render("pages/error")
   }
 })
-
-app.listen(8080)
-console.log('Server is listening on port 8080')
 
