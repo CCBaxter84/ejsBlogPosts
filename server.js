@@ -14,9 +14,12 @@ app.get("/:id", (req, res) => {
     const id = Number(req.params.id)
     const post = db.posts.find(it => it.id === id)
     if (!post) throw "Post not found"
+    if (!post.isPublic) throw "Unauthorized"
     res.render("pages/post", { post })
-  } catch {
-    res.render("pages/error")
+  } catch(e) {
+    res.render((e === "Unauthorized")
+      ? "pages/unauth"
+      : "pages/error")
   }
 })
 
