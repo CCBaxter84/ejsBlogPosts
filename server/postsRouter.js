@@ -8,8 +8,8 @@ router.get("/", (req, res) => {
 
 router.get("/:id", (req, res) => {
   try {
-    const id = Number(req.params.id)
-    const post = db.posts.find(it => it.id === id)
+    const id = req.params.id
+    const post = db.posts.find(it => it.id == id)
     if (!post) throw "Post not found"
     if (!post.isPublic) throw "Unauthorized"
     res.render("pages/post", { post })

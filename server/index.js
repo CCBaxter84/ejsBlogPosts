@@ -1,6 +1,6 @@
 const express = require("express")
 const app = express()
-const postsRouter = require("./postsRouter")
+const postsRouter = require("./postsRouter2")
 
 app.set("view engine", "ejs")
 app.set("views", __dirname + "/../views")
