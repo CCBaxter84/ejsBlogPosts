@@ -1,0 +1,37 @@
+:root {
+  font-family: 'Verdana';
+  background-color: lightcyan;
+}
+
+.container {
+  background-color: aliceblue;
+  border: 2px solid lightsteelblue;
+  border-radius: 1rem;
+  box-shadow: 0 0 7px;
+  color: grey;
+  margin: 2rem auto;
+  padding: 1rem;
+  width: 50%;
+}
+
+.has-text-black {
+  color: black;
+}
+
+.is-flex, .is-flex-column, .is-flex-column-center {
+  display: flex;
+}
+
+.is-flex-column, .is-flex-column-center {
+  flex-direction: column;
+}
+
+.is-flex-column-center {
+  align-items: center;
+}
+
+@media screen and (max-width: 1024px) {
+  .container {
+    width: 75%;
+  }
+}
