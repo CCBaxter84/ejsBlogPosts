@@ -12,6 +12,6 @@ app.use(express.static(__dirname + "/../public"))
 app.use(express.json())
 app.use("/posts", postsRouter)
 
-app.listen(8080)
-console.log('Server is listening on port 8080')
+app.listen(8081)
+console.log('Server is listening on port 8081')
 

@@ -30,6 +30,11 @@
   align-items: center;
 }
 
+.image-contain {
+  object-fit: contain;
+  max-width: 100%;
+}
+
 @media screen and (max-width: 1024px) {
   .container {
     width: 75%;
