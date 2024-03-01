@@ -2,11 +2,11 @@
 <main>
   <ul>
     <%  for (var i = 0; i < posts.length ; i++) { %>
-          <li> 
-            <a href=<%= `${posts[i].id}` %>>
-              <%= posts[i].title %>
-            </a> 
-          </li>
+      <li> 
+        <a href=<%= `/posts/${posts[i].id}` %>>
+          <%= posts[i].title %>
+        </a> 
+      </li>
     <%  } %>
   </ul>
 </main>

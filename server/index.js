@@ -1,6 +1,7 @@
 const express = require("express")
 const expressLayouts = require("express-ejs-layouts")
 const app = express()
+const homeRouter = require("./homeRouter")
 const postsRouter = require("./postsRouter")
 
 app.set("view engine", "ejs")
@@ -10,6 +11,7 @@ app.use(expressLayouts)
 app.use(express.static(__dirname + "/../public"))
 
 app.use(express.json())
+app.use("/", homeRouter)
 app.use("/posts", postsRouter)
 
 app.listen(8081)
