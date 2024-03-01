@@ -1,0 +1,12 @@
+<%- include("../partials/header", { title: "My Posts" }) %>
+<main>
+  <ul>
+    <%  for (var i = 0; i < posts.length ; i++) { %>
+          <li> 
+            <a href=<%= `${posts[i].id}` %>>
+              <%= posts[i].title %>
+            </a> 
+          </li>
+    <%  } %>
+  </ul>
+</main>
