@@ -2,8 +2,13 @@ const express = require("express")
 const router = express.Router()
 const db = require("./db")
 
-router.get("/", (req, res) => {
-  res.send(db)
+router.get("/", (_, res) => {
+  try {
+    const posts = db.posts.filter(post => post.isPublic)
+    res.render("pages/posts", { posts })
+  } catch(e) {
+    res.render(getErrorPage(e))
+  }
 })
 
 router.get("/:id", (req, res) => {
@@ -14,10 +19,14 @@ router.get("/:id", (req, res) => {
     if (!post.isPublic) throw "Unauthorized"
     res.render("pages/post", { post })
   } catch(e) {
-    res.render((e === "Unauthorized")
-      ? "pages/unauth"
-      : "pages/error")
+    res.render(getErrorPage(e))
   }
 })
 
 module.exports = router
+
+function getErrorPage(e) {
+  return (e === "Unauthorized")
+      ? "pages/unauth"
+      : "pages/error"
+}
