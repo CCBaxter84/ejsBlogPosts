@@ -3,8 +3,13 @@ const router = express.Router()
 const db = require("./db")
 const { isValidPost } = require("./helpers")
 
-router.get("/", () => {
-  res.send(db)
+router.get("/", (_, res) => {
+  try {
+    const posts = db.posts.filter(post => post.isPublic)
+    res.render("pages/posts", { posts })
+  } catch {
+    res.render("pages/error")
+  }
 })
 
 router.get("/:id", (req, res) => {
@@ -22,4 +27,3 @@ router.get("/:id", (req, res) => {
 })
 
 module.exports = router
-
